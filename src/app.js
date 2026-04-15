@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const { NotFoundError, FinalError } = require("@errors/errorHandling");
 const { AllRouter } = require("@router/all.router");
 
+const { sequelize } = require("@configs/sequelize.config");
+
 const app = express();
 dotenv.config({ quiet: true });
 app.use(morgan("dev"));
