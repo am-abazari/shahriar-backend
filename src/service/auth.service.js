@@ -6,6 +6,7 @@ const { AuthMessages } = require("@message/auth.message");
 
 // helper
 const { signToken } = require("@helper/jwt");
+const { createHash, comparePasswordWithHash } = require("@helper/hash");
 
 const Register = async (dto) => {
   const { name, username, password, email, bio } = dto;
@@ -28,7 +29,7 @@ const Register = async (dto) => {
   await UserModel.create({
     name,
     username,
-    password,
+    password: createHash(password),
     bio,
     email,
   });
@@ -51,15 +52,15 @@ const Login = async (dto) => {
     },
   });
 
-  if (!found || found.password !== password)
+  if (!found || !comparePasswordWithHash(password, found.password))
     throw { status: 404, message: AuthMessages.UserNotFound };
 
   const refreshToken = signToken(
-    { name: found.name, username: found.email, email: found.email },
+    { name: found.name, username: found.username, email: found.email },
     "1y",
   );
   const accessToken = signToken(
-    { name: found.name, username: found.email, email: found.email },
+    { name: found.name, username: found.username, email: found.email },
     "7d",
   );
   return {
