@@ -4,6 +4,7 @@ const AuthMessages = Object.freeze({
   DuplicatedUsername: "نام‌کاربری قبلا انتخاب شده",
   DuplicatedEmail: "ایمیل قبلا انتخاب شده",
   UserNotFound: "نام‌کاربری یا پسورد شما اشتباه میباشد",
+  LoginAgain: "لطفا مجدد وارد شوید",
 });
 
 module.exports = { AuthMessages };

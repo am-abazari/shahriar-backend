@@ -8,6 +8,11 @@
 /**
  * @swagger
  * components:
+ *  securitySchemes:
+ *    bearerAuth:
+ *      type: http
+ *      scheme: bearer
+ *      bearerFormat: JWT
  *  schemas:
  *    Register:
  *      type: object
@@ -37,6 +42,7 @@
  *          type: string
  *        password:
  *          type: string
+ *
  */
 
 /**

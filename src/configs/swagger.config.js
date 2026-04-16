@@ -13,6 +13,7 @@ const SwaggerConfig = (app) => {
         version: "1.0.0",
       },
     },
+
     apis: [documents],
   });
   const swagger = swaggerUI.setup(swaggerDoc, {

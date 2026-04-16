@@ -8,12 +8,15 @@ const PoemModel = sequelize.define("poem", {
   },
   description: {
     type: DataTypes.TEXT,
+    allowNull: true,
   },
   poet: {
     type: DataTypes.STRING,
+    allowNull: true,
   },
   writerID: {
     type: DataTypes.INTEGER,
+    allowNull: false,
   },
   voice: {
     type: DataTypes.STRING,

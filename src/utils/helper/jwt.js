@@ -7,12 +7,8 @@ const signToken = (payload, expiresIn = "30d") => {
 };
 
 const verifyToken = (token) => {
-  try {
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    return verified;
-  } catch {
-    return false;
-  }
+  const verified = jwt.verify(token, process.env.JWT_SECRET);
+  return verified;
 };
 
 module.exports = { signToken, verifyToken };
