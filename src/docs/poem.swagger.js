@@ -66,3 +66,16 @@
  *      404:
  *        description: poem not found
  */
+/**
+ * @swagger
+ * /poem/:
+ *  get:
+ *    summary: Get all poems
+ *    tags:
+ *      - Poem
+ *    responses:
+ *      200:
+ *        description: success
+ *      404:
+ *        description: poem not found
+ */

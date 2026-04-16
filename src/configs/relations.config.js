@@ -1,6 +1,6 @@
-const { CoupletModel } = require("@model/couplet.model");
-const { PoemModel } = require("@model/poem.model");
 const { UserModel } = require("@model/user.model");
+const { PoemModel } = require("@model/poem.model");
+const { CoupletModel } = require("@model/couplet.model");
 
 const CreateRelations = () => {
   PoemModel.hasMany(CoupletModel, {
@@ -14,7 +14,6 @@ const CreateRelations = () => {
   UserModel.hasMany(PoemModel, {
     foreignKey: {
       name: "writerID",
-      onDelete: "SET NULL",
     },
     sourceKey: "id",
   });

@@ -40,4 +40,11 @@ const GetPoem = async (dto) => {
   return { ...poem.dataValues, couplets };
 };
 
-module.exports = { CreatePoem, GetPoem };
+const GetAllPoems = async (dto) => {
+  const poems = await PoemModel.findAll({
+    raw: true,
+  });
+  return poems;
+};
+
+module.exports = { CreatePoem, GetPoem, GetAllPoems };
