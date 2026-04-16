@@ -14,6 +14,7 @@ const CreateRelations = () => {
   UserModel.hasMany(PoemModel, {
     foreignKey: {
       name: "writerID",
+      onDelete: "SET NULL",
     },
     sourceKey: "id",
   });
