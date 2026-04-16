@@ -7,7 +7,8 @@ const cookieParser = require("cookie-parser");
 const { NotFoundError, FinalError } = require("@errors/errorHandling");
 const { AllRouter } = require("@router/all.router");
 
-const { sequelize } = require("@configs/sequelize.config");
+require("@configs/sequelize.config");
+const { CreateRelations } = require("@configs/relations.config");
 
 const app = express();
 dotenv.config({ quiet: true });
@@ -16,6 +17,8 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
+
+CreateRelations();
 
 app.use(AllRouter);
 
