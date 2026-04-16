@@ -9,6 +9,7 @@ const { AllRouter } = require("@router/all.router");
 
 require("@configs/sequelize.config");
 const { CreateRelations } = require("@configs/relations.config");
+const { SwaggerConfig } = require("@configs/swagger.config");
 
 const app = express();
 dotenv.config({ quiet: true });
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
+SwaggerConfig(app);
 CreateRelations();
 
 app.use(AllRouter);
