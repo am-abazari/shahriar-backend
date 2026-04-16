@@ -53,3 +53,21 @@
  *      400:
  *        description: bad request
  */
+
+/**
+ * @swagger
+ * /couplet/{id}:
+ *  get:
+ *    summary: Couplet creation api post call
+ *    tags:
+ *      - Couplet
+ *    parameters:
+ *      - in:  path
+ *        name: id
+ *        type: string
+ *    responses:
+ *      200:
+ *        description: success
+ *      404:
+ *        description: poem not found
+ */

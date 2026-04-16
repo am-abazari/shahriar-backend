@@ -6,7 +6,7 @@ const { PoemModel } = require("@model/poem.model");
 const { CoupletMessage } = require("@message/couplet.message");
 
 const CreateCouplet = async (dto) => {
-  const { poemID, verse1, verse2, start_time, end_time, couplet } = dto;
+  const { poemID, verse1, verse2, start_time, end_time, couplet, me } = dto;
   const poem = await PoemModel.findOne({
     raw: true,
     where: {
@@ -15,6 +15,8 @@ const CreateCouplet = async (dto) => {
   });
 
   if (!poem) throw { status: 404, message: CoupletMessage.PoemNotFound };
+  if (poem.writerID !== me)
+    throw { status: 403, message: CoupletMessage.NoAccess };
 
   const foundCouplet = await CoupletModel.findOne({
     raw: true,
@@ -37,4 +39,24 @@ const CreateCouplet = async (dto) => {
   return result.dataValues;
 };
 
-module.exports = { CreateCouplet };
+const GetAllCoupletsOfPoem = async (dto) => {
+  const poem = await PoemModel.findOne({
+    raw: true,
+    where: {
+      id: dto.id,
+    },
+  });
+  if (!poem) throw { status: 404, message: CoupletMessage.PoemNotFound };
+  return await CoupletModel.findAll({
+    raw: true,
+    order: ["couplet"],
+    where: {
+      poemID: dto.id,
+    },
+    attributes: {
+      exclude: ["createdAt", "updatedAt"],
+    },
+  });
+};
+
+module.exports = { CreateCouplet, GetAllCoupletsOfPoem };

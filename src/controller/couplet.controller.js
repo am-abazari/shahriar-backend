@@ -14,6 +14,7 @@ const CreateCouplet = async (req, res, next) => {
       start_time,
       end_time,
       couplet,
+      me: req.user.id,
     });
 
     res
@@ -24,4 +25,15 @@ const CreateCouplet = async (req, res, next) => {
   }
 };
 
-module.exports = { CreateCouplet };
+const GetAllCoupletsOfPoem = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const data = await CoupletService.GetAllCoupletsOfPoem({ id });
+    res.json({ status: 200, message: CoupletMessage.FetchedAll, data });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { CreateCouplet, GetAllCoupletsOfPoem };
