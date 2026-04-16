@@ -1,11 +1,11 @@
-const { Op } = require("@sequelize/core");
-
 // model
 const { UserModel } = require("@model/user.model");
 
 // messages
 const { AuthMessages } = require("@message/auth.message");
-const { signToken } = require("../utils/helper/jwt");
+
+// helper
+const { signToken } = require("@helper/jwt");
 
 const Register = async (dto) => {
   const { name, username, password, email, bio } = dto;
@@ -41,4 +41,31 @@ const Register = async (dto) => {
   };
 };
 
-module.exports = { Register };
+const Login = async (dto) => {
+  const { username, password } = dto;
+
+  let found = await UserModel.findOne({
+    raw: true,
+    where: {
+      username,
+    },
+  });
+
+  if (!found || found.password !== password)
+    throw { status: 404, message: AuthMessages.UserNotFound };
+
+  const refreshToken = signToken(
+    { name: found.name, username: found.email, email: found.email },
+    "1y",
+  );
+  const accessToken = signToken(
+    { name: found.name, username: found.email, email: found.email },
+    "7d",
+  );
+  return {
+    accessToken,
+    refreshToken,
+  };
+};
+
+module.exports = { Register, Login };

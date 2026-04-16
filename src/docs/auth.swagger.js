@@ -80,4 +80,6 @@
  *        description: success
  *      400:
  *        description: bad request
+ *      404:
+ *        description: wrong username password
  */

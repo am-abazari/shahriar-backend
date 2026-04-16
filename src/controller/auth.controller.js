@@ -25,10 +25,29 @@ const Register = async (req, res, next) => {
     setCookie(res, "access_token", data.accessToken, Times["1w"]);
     setCookie(res, "refresh_token", data.refreshToken, Times["1y"]);
 
-    res.status(201).json({ status: 201, message: AuthMessages.Created, data });
+    res
+      .status(201)
+      .json({ status: 201, message: AuthMessages.Registered, data });
+  } catch (error) {
+    next(error);
+  }
+};
+const Login = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+
+    const data = await AuthService.Login({
+      username,
+      password,
+    });
+
+    setCookie(res, "access_token", data.accessToken, Times["1w"]);
+    setCookie(res, "refresh_token", data.refreshToken, Times["1y"]);
+
+    res.status(200).json({ status: 200, message: AuthMessages.LoggedIn, data });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = { Register };
+module.exports = { Register, Login };

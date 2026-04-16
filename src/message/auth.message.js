@@ -1,7 +1,9 @@
 const AuthMessages = Object.freeze({
-  Created: "کاربر با موفقیت ساخته شد",
+  Registered: "کاربر با موفقیت ساخته شد",
+  LoggedIn: "با موفقیت وارد شدید",
   DuplicatedUsername: "نام‌کاربری قبلا انتخاب شده",
   DuplicatedEmail: "ایمیل قبلا انتخاب شده",
+  UserNotFound: "نام‌کاربری یا پسورد شما اشتباه میباشد",
 });
 
 module.exports = { AuthMessages };
