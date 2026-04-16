@@ -26,7 +26,7 @@ const Register = async (dto) => {
   });
   if (found) throw { status: 400, message: AuthMessages.DuplicatedEmail };
 
-  await UserModel.create({
+  const result = await UserModel.create({
     name,
     username,
     password: createHash(password),
@@ -34,8 +34,14 @@ const Register = async (dto) => {
     email,
   });
 
-  const refreshToken = signToken({ name, username, email }, "1y");
-  const accessToken = signToken({ name, username, email }, "7d");
+  const refreshToken = signToken(
+    { id: result.dataValues.id, name, username, email },
+    "1y",
+  );
+  const accessToken = signToken(
+    { id: result.dataValues.id, name, username, email },
+    "7d",
+  );
   return {
     accessToken,
     refreshToken,
@@ -56,11 +62,21 @@ const Login = async (dto) => {
     throw { status: 404, message: AuthMessages.UserNotFound };
 
   const refreshToken = signToken(
-    { name: found.name, username: found.username, email: found.email },
+    {
+      id: found.id,
+      name: found.name,
+      username: found.username,
+      email: found.email,
+    },
     "1y",
   );
   const accessToken = signToken(
-    { name: found.name, username: found.username, email: found.email },
+    {
+      id: found.id,
+      name: found.name,
+      username: found.username,
+      email: found.email,
+    },
     "7d",
   );
   return {

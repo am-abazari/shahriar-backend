@@ -15,6 +15,10 @@ const PoemModel = sequelize.define("poem", {
   writerID: {
     type: DataTypes.INTEGER,
   },
+  voice: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 
 module.exports = { PoemModel };
