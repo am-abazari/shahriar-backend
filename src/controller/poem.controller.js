@@ -21,4 +21,15 @@ const CreatePoem = async (req, res, next) => {
   }
 };
 
-module.exports = { CreatePoem };
+const GetPoem = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const data = await PoemService.GetPoem({ id });
+    res.json({ status: 200, message: PoemMessage.Fetched, data });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { CreatePoem, GetPoem };

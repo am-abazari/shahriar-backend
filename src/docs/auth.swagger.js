@@ -49,7 +49,7 @@
  * @swagger
  * /auth/register:
  *  post:
- *    summary: User registration api post call
+ *    summary: User registration
  *    tags:
  *      - Auth
  *    requestBody:
@@ -70,7 +70,7 @@
  * @swagger
  * /auth/login:
  *  post:
- *    summary: User login api post call
+ *    summary: User login
  *    tags:
  *      - Auth
  *    requestBody:

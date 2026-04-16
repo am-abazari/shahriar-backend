@@ -28,7 +28,7 @@
  * @swagger
  * /poem/:
  *  post:
- *    summary: Poem creation api post call
+ *    summary: Poem creation
  *    tags:
  *      - Poem
  *    requestBody:
@@ -48,4 +48,21 @@
  *        description: bad request
  *      409:
  *        description: conflict for couplet number
+ */
+
+/**
+ * @swagger
+ * /poem/{id}:
+ *  get:
+ *    summary: Get poem with given id
+ *    tags:
+ *      - Poem
+ *    parameters:
+ *      - in:  path
+ *        name: id
+ *    responses:
+ *      200:
+ *        description: success
+ *      404:
+ *        description: poem not found
  */

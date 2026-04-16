@@ -34,7 +34,7 @@
  * @swagger
  * /couplet/:
  *  post:
- *    summary: Couplet creation api post call
+ *    summary: Couplet creation
  *    tags:
  *      - Couplet
  *    requestBody:
@@ -58,7 +58,7 @@
  * @swagger
  * /couplet/{id}:
  *  get:
- *    summary: Couplet creation api post call
+ *    summary: Get couplets of a poem with poem id
  *    tags:
  *      - Couplet
  *    parameters:
