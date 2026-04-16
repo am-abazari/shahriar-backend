@@ -1,44 +1,50 @@
 /**
  * @swagger
  * tags:
- *  name: Poem
- *  description: Poem API Calls
+ *  name: Couplet
+ *  description: Couplet API Calls
  */
 
 /**
  * @swagger
  * components:
  *  schemas:
- *    CreatePoem:
+ *    CreateCouplet:
  *      type: object
  *      required:
- *        - name
+ *        - poemID
+ *        - verse1
+ *        - couplet
  *      properties:
- *        name:
+ *        poemID:
+ *          type: number
+ *        verse1:
  *          type: string
- *        description:
+ *        verse2:
  *          type: string
- *        poet:
+ *        start_time:
  *          type: string
- *        voice:
+ *        end_time:
  *          type: string
+ *        couplet:
+ *          type: number
  */
 
 /**
  * @swagger
- * /poem/:
+ * /couplet/:
  *  post:
- *    summary: Poem creation api post call
+ *    summary: Couplet creation api post call
  *    tags:
- *      - Poem
+ *      - Couplet
  *    requestBody:
  *      content:
  *        application/x-www-form-urlencoded:
  *          schema:
- *            $ref: '#/components/schemas/CreatePoem'
+ *            $ref: '#/components/schemas/CreateCouplet'
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/CreatePoem'
+ *            $ref: '#/components/schemas/CreateCouplet'
  *    security:
  *      - bearerAuth: []
  *    responses:
@@ -46,6 +52,4 @@
  *        description: created
  *      400:
  *        description: bad request
- *      409:
- *        description: conflict for couplet number
  */

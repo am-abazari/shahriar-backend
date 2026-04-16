@@ -1,4 +1,4 @@
-const { PoemModel } = require("../model/poem.model");
+const { PoemModel } = require("@model/poem.model");
 
 const CreatePoem = async (dto) => {
   const { name, description, poet, writerID, voice } = dto;

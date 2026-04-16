@@ -11,7 +11,7 @@ const CreatePoem = async (req, res, next) => {
       name,
       description,
       poet,
-      writerID: req.user.id,
+      writerID: req?.user?.id,
       voice,
     });
 
