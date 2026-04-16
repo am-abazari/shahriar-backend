@@ -7,8 +7,8 @@ const sequelize = new Sequelize({
   logging: false,
 });
 
-// sequelize.sync({ alter: true });
-sequelize.sync({ force: true });
+sequelize.sync({ alter: true });
+// sequelize.sync({ force: true });
 sequelize
   .authenticate()
   .then(() => console.log("Connected to DB Successfully"))
