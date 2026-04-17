@@ -5,7 +5,9 @@ const PoemController = require("@controller/poem.controller");
 
 // guard
 const { AuthGuard } = require("@guard/auth.guard");
-const uploadFile = require("../configs/multer.config");
+
+// config
+const uploadFile = require("@configs/multer.config");
 
 const router = Router();
 
