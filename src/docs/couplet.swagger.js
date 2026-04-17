@@ -28,6 +28,8 @@
  *          type: string
  *        couplet:
  *          type: number
+ *        show:
+ *          type: boolean
  */
 
 /**

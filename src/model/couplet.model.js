@@ -15,16 +15,21 @@ const CoupletModel = sequelize.define("couplet", {
     allowNull: true,
   },
   start_time: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: true,
   },
   end_time: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: true,
   },
   couplet: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  show: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
   },
 });
 
