@@ -12,7 +12,7 @@ const CreatePoem = async (req, res, next) => {
       description,
       poet,
       writerID: req?.user?.id,
-      voice,
+      voice: "/voice/" + req.file.filename,
     });
 
     res.status(201).json({ status: 201, message: PoemMessage.Created, data });

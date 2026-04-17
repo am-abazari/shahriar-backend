@@ -21,7 +21,7 @@
  *        poet:
  *          type: string
  *        voice:
- *          type: string
+ *          type: file
  */
 
 /**
@@ -33,7 +33,7 @@
  *      - Poem
  *    requestBody:
  *      content:
- *        application/x-www-form-urlencoded:
+ *        multipart/form-data:
  *          schema:
  *            $ref: '#/components/schemas/CreatePoem'
  *        application/json:

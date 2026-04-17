@@ -5,10 +5,16 @@ const PoemController = require("@controller/poem.controller");
 
 // guard
 const { AuthGuard } = require("@guard/auth.guard");
+const uploadFile = require("../configs/multer.config");
 
 const router = Router();
 
-router.post("/", AuthGuard, PoemController.CreatePoem);
+router.post(
+  "/",
+  AuthGuard,
+  uploadFile.single("voice"),
+  PoemController.CreatePoem,
+);
 router.get("/", PoemController.GetAllPoems);
 router.get("/:id", PoemController.GetPoem);
 
